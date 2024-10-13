@@ -89,6 +89,8 @@ Plug 'ghifarit53/tokyonight-vim'
 Plug 'ap/vim-css-color'
 Plug 'github/copilot.vim'
 let g:copilot_node_command = "~/.nvm/versions/node/v22.9.0/bin/node"
+" If you have nodejs
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
 
 call plug#end()
 
