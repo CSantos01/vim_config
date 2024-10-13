@@ -1,4 +1,3 @@
-:call mkdp#util#install()" Change language
 language en_US.utf8
 
 " Disable compatibility with vi which can cause unexpected issues.
@@ -91,6 +90,7 @@ Plug 'github/copilot.vim'
 let g:copilot_node_command = "~/.nvm/versions/node/v22.9.0/bin/node"
 " If you have nodejs
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
+Plug 'lambdalisue/battery.vim'
 
 call plug#end()
 
@@ -261,6 +261,7 @@ set statusline+=\ %F\ %M\ %Y\ %R
 set statusline+=%=  " Divider between left and right status line
 set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c\ percent:\ %p%%
 set statusline+=\ time:\ %{StatusLineTime()}  " Add time to the status line
+set statusline+=\ battery:\ %{battery#component()}  " Add battery status to the status line
 set laststatus=2
 
 " Add a timer to periodically update the status bar.
