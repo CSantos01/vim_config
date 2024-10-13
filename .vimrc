@@ -1,4 +1,4 @@
-" Change language
+:call mkdp#util#install()" Change language
 language en_US.utf8
 
 " Disable compatibility with vi which can cause unexpected issues.
@@ -250,19 +250,23 @@ endif
 " STATUS LINE ------------------------------------------------------------ {{{
 
 " Status bar code goes here.
+" Define a function to get the current time.
+function! StatusLineTime()
+    return strftime("%H:%M:%S")
+endfunction
 
-" Clear status line when vimrc is reloaded.
+" Update the status line to include the current time.
 set statusline=
-
-" Status line left side.
 set statusline+=\ %F\ %M\ %Y\ %R
-
-" Use a divider to separate the left side from the right side.
-set statusline+=%=
-
-" Status line right side.
+set statusline+=%=  " Divider between left and right status line
 set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c\ percent:\ %p%%
-
-" Show the status on the second to last line.
+set statusline+=\ time:\ %{StatusLineTime()}  " Add time to the status line
 set laststatus=2
+
+" Add a timer to periodically update the status bar.
+function! UpdateStatusLineTimer(timer_id)
+    redrawstatus
+endfunction
+
+call timer_start(1000, 'UpdateStatusLineTimer', {'repeat': -1})
 " }}}
