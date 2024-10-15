@@ -21,8 +21,17 @@ git clone git@github.com:CSantos01/vim_config.git
 cd vim_config
 cp .vimrc ~/.vimrc
 ```
-Then source inside vim:
+
+Then install [vim-plug](https://github.com/junegunn/vim-plug)
+```bash
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
+
+Finally, inside vim, install all the plugins and source:
 ```vim
+:PlugInstall
 :source ~/.vimrc
 ```
+(You may encounter an error when installing the live markdown plugin, but just press "R" to retry and it should work) 
 
